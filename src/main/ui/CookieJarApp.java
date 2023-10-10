@@ -1,10 +1,8 @@
 package ui;
 
-import com.sun.jdi.IntegerValue;
 import model.Cookbook;
 import model.Recipe;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -27,7 +25,7 @@ public class CookieJarApp {
     @SuppressWarnings("methodlength")
     private void runCookieJar() {
         boolean running = true;
-        String userInput = null;
+        String userInput;
 
         while (running) {
             displayMenu();

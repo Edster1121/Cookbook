@@ -75,6 +75,18 @@ class RecipeTest {
     }
 
     @Test
+    void testAddStepMultiple(){
+        testRecipe.addStep("Gather all ingredients!");
+        testRecipe.addStep("Bake Cookies!");
+
+        List<String> steps = testRecipe.getSteps();
+
+        assertEquals("Gather all ingredients!", steps.get(0));
+        assertEquals("Bake Cookies!", steps.get(1));
+        assertEquals(2, steps.size());
+    }
+
+    @Test
     void testSetTime(){
         testRecipe.setTime(100);
         assertEquals(100, testRecipe.getTimeRequired());
