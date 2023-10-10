@@ -22,7 +22,7 @@ as I **love** to cook at home and always wanted a better way to track my recipes
 
 A *bulleted* list:
 - As a user, I want to add recipes to my cookbook
-- As a user, I want to rate the recipes on a scale of 1-5 on difficulty to make
+- As a user, I want to rate the recipes on a scale of 1-5
 - As a user, I want to be able to see a recipe in detail
 - item 3
 
