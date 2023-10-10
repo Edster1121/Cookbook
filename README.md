@@ -4,17 +4,19 @@
 
 <h1>Cookbook Project </h1>
 
-<p> My project is a cookbook which keeps track of recipes with steps, ingredients, equipment needed, and time required
-to make the dish. It is The cookbook class will be a list of recipes which people can look through to find the 
-recipe they desire. Each recipe will also be marked one of the following tags if applicable: </p>
+<p> My project is a cookbook which keeps track of recipes for people for convenience. 
+My recipe class will have  the following
 <ul>
-  <li>Vegetarian</li>
-  <li>Vegan</li>
-  <li>Gluten-Free</li>
-  <li>Nut-Free</li>
+  <li>recipe name</li>
+  <li>author</li>
+  <li>ingredients</li>
+  <li>equipment</li>
+  <li>steps required</li>
+  <li>time required</li>
+  <li>rating</li>
 </ul>. 
-<p>This is to make this cookbook more accessible for people with certain dietary restrictions/preferences. 
-</p>
+The cookbook class will be a list of recipes which people can look through to find the 
+recipe they desire. </p>
 
 People who cook at home are the main target audience. This will make it easier to store recipes and search for
 them much easier than on paper (which can be lost or damaged beyond legibility). This project is of interest to me

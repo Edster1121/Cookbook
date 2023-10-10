@@ -19,7 +19,7 @@ public class Cookbook {
     }
 
     //Modifies: this
-    //Effects: returns recipe if the name of the recipe exists in the cookbook
+    //Effects: returns recipe if the name of the recipe exists in the cookbook, otherwise null
     public Recipe getRecipe(String recipeName) {
         for (Recipe next : this.cookbook) {
             if (recipeName == next.getRecipeName()) {

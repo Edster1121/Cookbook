@@ -25,9 +25,15 @@ public class CookbookTest {
     @Test //test for recipe in cookbook
     void testGetRecipeExists(){
         testCookbook.addRecipe(testRecipe1);
-        testCookbook.getRecipe("Cookies");
 
         assertEquals(testRecipe1, testCookbook.getRecipe("Cookies"));
+    }
+
+    @Test //test for recipe not in cookbook
+    void testGetRecipeDoesNotExist(){
+        testCookbook.addRecipe(testRecipe1);
+
+        assertNull(testCookbook.getRecipe("Cakes"));
     }
 
     @Test //test for add one recipe
