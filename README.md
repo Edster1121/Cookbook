@@ -5,7 +5,7 @@
 <h1>Cookbook Project </h1>
 
 <p> My project is a cookbook which keeps track of recipes for people for convenience. 
-My recipe class will have  the following
+My recipe class will have  the following </p>
 <ul>
   <li>recipe name</li>
   <li>author</li>
@@ -15,7 +15,7 @@ My recipe class will have  the following
   <li>time required</li>
   <li>rating</li>
 </ul>. 
-The cookbook class will be a list of recipes which people can look through to find the 
+<p> The cookbook class will be a list of recipes which people can look through to find the 
 recipe they desire. </p>
 
 People who cook at home are the main target audience. This will make it easier to store recipes and search for
@@ -29,5 +29,6 @@ A *bulleted* list:
 - As a user, I want to rate the recipes on a scale of 1-5
 - As a user, I want to be able to see a recipe in detail
 - As a user, I want to be able to delete recipes from my cookbook
+- As a user, I want to be able to edit recipes from my cookbook
 
 An example of text with **bold** and *italic* fonts.  

@@ -26,6 +26,30 @@ public class Recipe {
     }
 
     //Modifies: this
+    //Effects: changes this.name to recipeName
+    public void changeRecipeName(String recipeName) {
+        this.name = recipeName;
+    }
+
+    //Modifies: this
+    //Effects: turns ingredient list to empty array list
+    public void clearIngredients() {
+        this.ingredients = new ArrayList<>();
+    }
+
+    //Modifies: this
+    //Effects: turns steps list to empty array list
+    public void clearSteps() {
+        this.steps = new ArrayList<>();
+    }
+
+    //Modifies: this
+    //Effects: turns equipment list to empty array list
+    public void clearEquipment() {
+        this.equipment = new ArrayList<>();
+    }
+
+    //Modifies: this
     //Effects: adds ingredient to list of ingredients in list
     public void addIngredient(String ingredient) {
         this.ingredients.add(ingredient);
