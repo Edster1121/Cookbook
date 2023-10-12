@@ -34,19 +34,19 @@ public class Recipe {
     //Modifies: this
     //Effects: turns ingredient list to empty array list
     public void clearIngredients() {
-        this.ingredients = new ArrayList<>();
+        this.ingredients.clear();
     }
 
     //Modifies: this
     //Effects: turns steps list to empty array list
     public void clearSteps() {
-        this.steps = new ArrayList<>();
+        this.steps.clear();
     }
 
     //Modifies: this
     //Effects: turns equipment list to empty array list
     public void clearEquipment() {
-        this.equipment = new ArrayList<>();
+        this.equipment.clear();
     }
 
     //Modifies: this

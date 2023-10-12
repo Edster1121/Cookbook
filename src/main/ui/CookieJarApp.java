@@ -73,12 +73,12 @@ public class CookieJarApp {
             while (keepGoing) {
                 System.out.println("What would you like to edit?");
                 System.out.println("type 'name' to change this recipe name");
-                System.out.println("type 'ingredients' to change the ingredients in this recipe");
-                System.out.println("type 'equipment' to change the equipment in this recipe");
-                System.out.println("type 'steps' to change the steps in this recipe");
                 System.out.println("type 'author' to change the author in this recipe");
                 System.out.println("type 'time' to change the time required in this recipe");
                 System.out.println("type 'rating' to change the rating of this recipe");
+                System.out.println("type 'ingredients' to change the ingredients in this recipe");
+                System.out.println("type 'equipment' to change the equipment in this recipe");
+                System.out.println("type 'steps' to change the steps in this recipe");
                 System.out.println("type 'exit' to go back to the MAIN MENU");
 
                 userInput = input.nextLine();
@@ -112,9 +112,10 @@ public class CookieJarApp {
                     System.out.println("Please add new equipment (add a '/' between each ingredient)");
                     userInput = input.nextLine();
                     userRecipe.clearEquipment();
-                    processIngredients(userInput);
+                    processEquipment(userInput);
                     System.out.println("Successfully changed the equipment list :)");
                 } else if (userInput.equals("steps")) {
+                    userRecipe.clearSteps();
                     processSteps();
                     System.out.println("Successfully changed the steps list :)");
                 } else if (userInput.equals("exit")) {
@@ -136,8 +137,8 @@ public class CookieJarApp {
             System.out.println("Here is a list of recipes:");
             for (Recipe next : myCookbook.getListOfRecipe()) {
                 System.out.println("\u001B[32m\t" + next.getRecipeName() + "\u001B[0m");
-                System.out.println("Please type the name of the recipe you would like to delete from the cookbook");
             }
+            System.out.println("Please type the name of the recipe you would like to delete from the cookbook");
             userInput = input.nextLine();
             Recipe userRecipe = myCookbook.getRecipe(userInput);
             if (myCookbook.getListOfRecipe().contains(userRecipe)) {
@@ -190,7 +191,7 @@ public class CookieJarApp {
                         + "Equipment:" + equipmentToString(next.getEquipment())
                         + "\r\n"
                         + "Steps:"
-                        + stepsToString(next.getSteps()).substring(0, stepsToString(next.getSteps()).length() - 1)
+                        + stepsToString(next.getSteps())
                         + "\r\n"
                         + "\u001B[0m");
     }
@@ -278,7 +279,7 @@ public class CookieJarApp {
     private void displayMenu() {
         System.out.println("\u001B[34m\t" + "MAIN MENU" + "\u001B[0m");
         System.out.println("type 'add' to add a recipe!");
-        System.out.println("type 'delete' to add a recipe!");
+        System.out.println("type 'delete' to delete a recipe!");
         System.out.println("type 'edit' to edit a recipe!");
         System.out.println("type 'check' to check recipes in your cookbook so far!");
         System.out.println("type 'quit' to quit!");
@@ -297,7 +298,7 @@ public class CookieJarApp {
 
     //Modifies: this
     //Effects: splits string containing equipment and adds each equipment to listOfEquipment,
-    // "/" between each equipment, returns listOfEquipment
+    // "/" between each equipment
     private void processEquipment(String userInput) {
         String[] listOfEquipment = userInput.split("/", 0);
 
@@ -307,7 +308,7 @@ public class CookieJarApp {
     }
 
     //Modifies: this
-    //Effects: adds string steps to the recipe, finishes once userInput
+    //Effects: adds string steps to the recipe
     private void processSteps() {
         boolean keepGoing = true;
         while (keepGoing) {
