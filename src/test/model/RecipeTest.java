@@ -128,16 +128,6 @@ class RecipeTest {
     }
 
     @Test
-    void testChangeRecipeEmptyString(){
-        assertEquals("", testRecipe1.getRecipeName());
-    }
-
-    @Test
-    void testChangeRecipeNameReplacePrev(){
-        assertEquals("Cookies", testRecipe.getRecipeName());
-    }
-
-    @Test
     void testClearIngredientsEmpty(){
         testRecipe.clearIngredients();
         assertTrue(testRecipe.getIngredients().isEmpty());
@@ -187,7 +177,7 @@ class RecipeTest {
     }
 
     @Test
-    void testChangeRecipeReplacePrev(){
+    void testChangeRecipeNameReplacePrev(){
         testRecipe.changeRecipeName("Fruit cake");
         assertEquals("Fruit cake", testRecipe.getRecipeName());
     }
