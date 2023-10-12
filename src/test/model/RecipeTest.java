@@ -9,10 +9,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RecipeTest {
     private Recipe testRecipe;
+    private Recipe testRecipe1;
 
     @BeforeEach
     void runBefore(){
         testRecipe = new Recipe("Cookies");
+        testRecipe1 = new Recipe("");
     }
 
     @Test
@@ -123,6 +125,59 @@ class RecipeTest {
         testRecipe.setRating(3);
         testRecipe.setRating(5);
         assertEquals(5, testRecipe.getRating());
+    }
+
+    @Test
+    void testChangeRecipeEmptyString(){
+        assertEquals("", testRecipe1.getRecipeName());
+    }
+
+    @Test
+    void testChangeRecipeNameReplacePrev(){
+        assertEquals("Cookies", testRecipe.getRecipeName());
+    }
+
+    @Test
+    void testClearIngredientsEmpty(){
+        testRecipe.clearIngredients();
+        assertTrue(testRecipe.getIngredients().isEmpty());
+    }
+
+    @Test
+    void testClearIngredients(){
+        testRecipe.addIngredient("sugar");
+        testRecipe.addIngredient("flour");
+        testRecipe.clearIngredients();
+
+        assertTrue(testRecipe.getIngredients().isEmpty());
+    }
+
+    @Test
+    void testClearStepsEmpty(){
+        testRecipe.clearSteps();
+        assertTrue(testRecipe.getSteps().isEmpty());
+    }
+
+    @Test
+    void testClearSteps(){
+        testRecipe.addStep("mix in bowl");
+        testRecipe.addStep("bake in oven");
+        testRecipe.clearSteps();
+        assertTrue(testRecipe.getSteps().isEmpty());
+    }
+
+    @Test
+    void testClearEquipmentEmpty(){
+        testRecipe.clearEquipment();
+        assertTrue(testRecipe.getEquipment().isEmpty());
+    }
+
+    @Test
+    void testClearEquipment(){
+        testRecipe.addEquipment("bowl");
+        testRecipe.addEquipment("oven");
+        testRecipe.clearEquipment();
+        assertTrue(testRecipe.getEquipment().isEmpty());
     }
 
 }
