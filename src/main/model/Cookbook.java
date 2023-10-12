@@ -19,11 +19,19 @@ public class Cookbook {
     }
 
     //Modifies: this
+    //Effects: removes recipe from cookbook, does nothing if no recipes in cookbook;
+    public void removeRecipe(Recipe recipe) {
+        this.cookbook.remove(recipe);
+    }
+
+    //Modifies: this
     //Effects: returns recipe if the name of the recipe exists in the cookbook, otherwise null
     public Recipe getRecipe(String recipeName) {
-        for (Recipe next : this.cookbook) {
-            if (recipeName == next.getRecipeName()) {
-                return next;
+        if (!(this.cookbook.isEmpty())) {
+            for (Recipe next : this.cookbook) {
+                if (next.getRecipeName().equals(recipeName)) {
+                    return next;
+                }
             }
         }
         return null;

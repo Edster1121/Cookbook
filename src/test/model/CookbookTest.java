@@ -2,8 +2,7 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CookbookTest {
     private Cookbook testCookbook;
@@ -48,9 +47,54 @@ public class CookbookTest {
     void testAddRecipeMultiple(){
         testCookbook.addRecipe(testRecipe1);
         testCookbook.addRecipe(testRecipe2);
-
         assertEquals(2, testCookbook.getListOfRecipe().size());
         assertEquals(testRecipe1, testCookbook.getListOfRecipe().get(0));
         assertEquals(testRecipe2, testCookbook.getListOfRecipe().get(1));
+    }
+
+    @Test //remove nothing
+    void testRemoveRecipeNothing(){
+        testCookbook.removeRecipe(testRecipe1);
+        assertTrue(testCookbook.getListOfRecipe().isEmpty());
+        assertEquals(0., testCookbook.getListOfRecipe().size());
+    }
+
+    @Test //test for remove one recipe
+    void testRemoveRecipeOne(){
+        testCookbook.addRecipe(testRecipe1);
+        testCookbook.removeRecipe(testRecipe1);
+
+        assertEquals(0, testCookbook.getListOfRecipe().size());
+        assertTrue(testCookbook.getListOfRecipe().isEmpty());
+    }
+
+    @Test //test for remove recipe not in list
+    void testRemoveRecipeNotInList(){
+        testCookbook.addRecipe(testRecipe1);
+        testCookbook.removeRecipe(testRecipe2);
+
+        assertEquals(1, testCookbook.getListOfRecipe().size());
+        assertEquals(testRecipe1, testCookbook.getListOfRecipe().get(0));
+    }
+
+    @Test //test for remove multiple recipes
+    void testRemoveRecipeMultiple(){
+        testCookbook.addRecipe(testRecipe1);
+        testCookbook.addRecipe(testRecipe2);
+        testCookbook.removeRecipe(testRecipe1);
+        testCookbook.removeRecipe(testRecipe2);
+
+        assertEquals(0, testCookbook.getListOfRecipe().size());
+        assertTrue(testCookbook.getListOfRecipe().isEmpty());
+    }
+
+    @Test //test for remove one recipe in list with multiple recipes
+    void testRemoveRecipeFromMultiple(){
+        testCookbook.addRecipe(testRecipe1);
+        testCookbook.addRecipe(testRecipe2);
+        testCookbook.removeRecipe(testRecipe1);
+
+        assertEquals(1, testCookbook.getListOfRecipe().size());
+        assertEquals(testRecipe2, testCookbook.getListOfRecipe().get(0));
     }
 }

@@ -23,9 +23,11 @@ them much easier than on paper (which can be lost or damaged beyond legibility).
 as I **love** to cook at home and always wanted a better way to track my recipes. 
 
 A *bulleted* list:
-- As a user, I want to add recipes to my cookbook
+- As a user, I want to be able to store multiple recipes in a cookbook
+- As a user, I want to be able to view a list of recipes in my cookbook
+- As a user, I want to be able to add recipes into my cookbook
 - As a user, I want to rate the recipes on a scale of 1-5
 - As a user, I want to be able to see a recipe in detail
-- item 3
+- As a user, I want to be able to delete recipes from my cookbook
 
 An example of text with **bold** and *italic* fonts.  
