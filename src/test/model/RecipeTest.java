@@ -180,4 +180,16 @@ class RecipeTest {
         assertTrue(testRecipe.getEquipment().isEmpty());
     }
 
+    @Test
+    void testChangeRecipeNameEmptyString(){
+        testRecipe1.changeRecipeName("Cheesecake");
+        assertEquals("Cheesecake", testRecipe1.getRecipeName());
+    }
+
+    @Test
+    void testChangeRecipeReplacePrev(){
+        testRecipe.changeRecipeName("Fruit cake");
+        assertEquals("Fruit cake", testRecipe.getRecipeName());
+    }
+
 }
