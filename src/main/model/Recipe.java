@@ -14,7 +14,7 @@ public class Recipe {
     private String author;            //tracks the name of the author of recipe
     private int rating;               //tracks the rating of recipe from 1-5
 
-    //Effects: sets name to recipeName, set ingredients, equipment, steps to empty
+    //Effects: creates a new recipe with name and intializes all components of the recipe
     public Recipe(String recipeName) {
         this.name = recipeName;
         this.ingredients = new ArrayList<>();
@@ -32,31 +32,31 @@ public class Recipe {
     }
 
     //Modifies: this
-    //Effects: turns ingredient list to empty array list
+    //Effects: clears ingredients list
     public void clearIngredients() {
         this.ingredients.clear();
     }
 
     //Modifies: this
-    //Effects: turns steps list to empty array list
+    //Effects: clears steps list
     public void clearSteps() {
         this.steps.clear();
     }
 
     //Modifies: this
-    //Effects: turns equipment list to empty array list
+    //Effects: clears equipment list
     public void clearEquipment() {
         this.equipment.clear();
     }
 
     //Modifies: this
-    //Effects: adds ingredient to list of ingredients in list
+    //Effects: adds ingredient to ingredients list
     public void addIngredient(String ingredient) {
         this.ingredients.add(ingredient);
     }
 
     //Modifies: this
-    //Effects: adds a piece of equipment to list of equipment
+    //Effects: adds equipment to list of equipment
     public void addEquipment(String equipment) {
         this.equipment.add(equipment);
     }
@@ -80,9 +80,8 @@ public class Recipe {
         this.author = author;
     }
 
-    //Requires: 1<= rating <= 5, rating is 1-5 inclusive
     //Modifies: this
-    //Effects: sets rating, replaces previous rating if exists
+    //Effects: sets rating, replaces previous rating if exists, 1<= rating <= 5, rating is 1-5 inclusive
     public void setRating(int rating) {
         this.rating = rating;
     }

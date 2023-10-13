@@ -51,73 +51,37 @@ public class CookieJarApp {
         }
     }
 
+    //Modifies: this
+    //Effects: Process if userInput is "edit"
     @SuppressWarnings("methodlength")
     private void processEditInput() {
         String userInput;
         if (myCookbook.getListOfRecipe().isEmpty()) {
             System.out.println("This cookbook is empty");
         } else {
-            System.out.println("Here is a list of recipes:");
-            for (Recipe next : myCookbook.getListOfRecipe()) {
-                System.out.println("\u001B[32m\t" + next.getRecipeName() + "\u001B[0m");
-                System.out.println("Please type the name of the recipe you would like to edit from the cookbook");
-            }
+            produceListOfRecipe();
             userInput = input.nextLine();
-            for (Recipe next : myCookbook.getListOfRecipe()) {
-                if (userInput.equals(next.getRecipeName())) {
-                    showRecipeSpecifics(next);
-                }
-            }
+            showSpecificsOfRecipe(userInput);
             boolean keepGoing = true;
             Recipe userRecipe = myCookbook.getRecipe(userInput);
             while (keepGoing) {
-                System.out.println("What would you like to edit?");
-                System.out.println("type 'name' to change this recipe name");
-                System.out.println("type 'author' to change the author in this recipe");
-                System.out.println("type 'time' to change the time required in this recipe");
-                System.out.println("type 'rating' to change the rating of this recipe");
-                System.out.println("type 'ingredients' to change the ingredients in this recipe");
-                System.out.println("type 'equipment' to change the equipment in this recipe");
-                System.out.println("type 'steps' to change the steps in this recipe");
-                System.out.println("type 'exit' to go back to the MAIN MENU");
+                displayEditOptions();
 
                 userInput = input.nextLine();
                 if (userInput.equals("name")) {
-                    System.out.println("Please enter a new recipe name");
-                    userInput = input.nextLine();
-                    userRecipe.changeRecipeName(userInput);
-                    System.out.println("Successfully changed the recipe name :)");
+                    editNameHelper(userRecipe);
                 } else if (userInput.equals("author")) {
-                    System.out.println("Please choose a new author name");
-                    userInput = input.nextLine();
-                    processAuthor(userInput);
-                    System.out.println("Successfully changed the author name :)");
+                    editAuthorHelper();
                 } else if (userInput.equals("time")) {
-                    System.out.println("Please type a new time (Type in numerical digits in minutes)");
-                    userInput = input.nextLine();
-                    processTime(userInput);
-                    System.out.println("Successfully changed the time required for this recipe :)");
+                    editTimeHelper();
                 } else if (userInput.equals("rating")) {
-                    System.out.println("Please choose a new rating (use numerical digits 1-5)");
-                    userInput = input.nextLine();
-                    processRating(userInput);
-                    System.out.println("Successfully changed the rating of this recipe :)");
+                    editRatingHelper();
                 } else if (userInput.equals("ingredients")) {
-                    System.out.println("Please add new ingredients (add a '/' between each ingredient)");
-                    userInput = input.nextLine();
-                    userRecipe.clearIngredients();
-                    processIngredients(userInput);
-                    System.out.println("Successfully changed the ingredients list :)");
+                    editIngredientsHelper(userRecipe);
                 } else if (userInput.equals("equipment")) {
-                    System.out.println("Please add new equipment (add a '/' between each ingredient)");
-                    userInput = input.nextLine();
-                    userRecipe.clearEquipment();
-                    processEquipment(userInput);
-                    System.out.println("Successfully changed the equipment list :)");
+                    editEquipmentHelper(userRecipe);
                 } else if (userInput.equals("steps")) {
-                    userRecipe.clearSteps();
-                    processSteps();
-                    System.out.println("Successfully changed the steps list :)");
+                    editStepsHelper(userRecipe);
                 } else if (userInput.equals("exit")) {
                     keepGoing = false;
                 } else {
@@ -125,6 +89,107 @@ public class CookieJarApp {
                 }
             }
         }
+    }
+
+    //Effects: shows recipe specifics if userInput is the name of a recipe in the cookbook
+    private void showSpecificsOfRecipe(String userInput) {
+        boolean keepGoing = true;
+        for (Recipe next : myCookbook.getListOfRecipe()) {
+            if (userInput.equals(next.getRecipeName())) {
+                showRecipeSpecifics(next);
+            }
+        }
+    }
+
+    //Effects: produce a list of recipes in cookbook and ask which recipe to view
+    private void produceListOfRecipe() {
+        System.out.println("Here is a list of recipes:");
+        for (Recipe next : myCookbook.getListOfRecipe()) {
+            System.out.println("\u001B[32m\t" + next.getRecipeName() + "\u001B[0m");
+            System.out.println("Please type the name of the recipe you would like to edit from the cookbook");
+        }
+    }
+
+    //Modifies: this
+    //Effects: changes steps to userInput's list of steps
+    private void editStepsHelper(Recipe userRecipe) {
+        userRecipe.clearSteps();
+        processSteps();
+        System.out.println("Successfully changed the steps list :)");
+    }
+
+    //Modifies: this
+    //Effects: changes equipment to userInput's list of equipment
+    private void editEquipmentHelper(Recipe userRecipe) {
+        String userInput;
+        System.out.println("Please add new equipment (add a '/' between each ingredient)");
+        userInput = input.nextLine();
+        userRecipe.clearEquipment();
+        processEquipment(userInput);
+        System.out.println("Successfully changed the equipment list :)");
+    }
+
+    //Modifies: this
+    //Effects: changes ingredients to userInput's list of ingredients
+    private void editIngredientsHelper(Recipe userRecipe) {
+        String userInput;
+        System.out.println("Please add new ingredients (add a '/' between each ingredient)");
+        userInput = input.nextLine();
+        userRecipe.clearIngredients();
+        processIngredients(userInput);
+        System.out.println("Successfully changed the ingredients list :)");
+    }
+
+    //Modifies: this
+    //Effects changes rating to userInput
+    private void editRatingHelper() {
+        String userInput;
+        System.out.println("Please choose a new rating (use numerical digits 1-5)");
+        userInput = input.nextLine();
+        processRating(userInput);
+        System.out.println("Successfully changed the rating of this recipe :)");
+    }
+
+    //Modifies: this
+    //Effects changes time to userInput
+    private void editTimeHelper() {
+        String userInput;
+        System.out.println("Please type a new time (Type in numerical digits in minutes)");
+        userInput = input.nextLine();
+        processTime(userInput);
+        System.out.println("Successfully changed the time required for this recipe :)");
+    }
+
+    //Modifies: this
+    //Effects: changes author name to userInput
+    private void editAuthorHelper() {
+        String userInput;
+        System.out.println("Please choose a new author name");
+        userInput = input.nextLine();
+        processAuthor(userInput);
+        System.out.println("Successfully changed the author name :)");
+    }
+
+    //Effects: changes the recipe name to the userInput
+    private void editNameHelper(Recipe userRecipe) {
+        String userInput;
+        System.out.println("Please enter a new recipe name");
+        userInput = input.nextLine();
+        userRecipe.changeRecipeName(userInput);
+        System.out.println("Successfully changed the recipe name :)");
+    }
+
+    //Effects: displays all recipe components available to edit
+    private static void displayEditOptions() {
+        System.out.println("What would you like to edit?");
+        System.out.println("type 'name' to change this recipe name");
+        System.out.println("type 'author' to change the author in this recipe");
+        System.out.println("type 'time' to change the time required in this recipe");
+        System.out.println("type 'rating' to change the rating of this recipe");
+        System.out.println("type 'ingredients' to change the ingredients in this recipe");
+        System.out.println("type 'equipment' to change the equipment in this recipe");
+        System.out.println("type 'steps' to change the steps in this recipe");
+        System.out.println("type 'exit' to go back to the MAIN MENU");
     }
 
     //Modifies: this
