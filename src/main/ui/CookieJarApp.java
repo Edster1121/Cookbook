@@ -262,7 +262,7 @@ public class CookieJarApp {
     }
 
     //Modifies: this
-    //Effects: processes if userInput is "add"
+    //Effects: process if userInput is "add"
     private void processAddInput() {
         String userInput;
         System.out.println("What is the name of your recipe?");
@@ -295,7 +295,7 @@ public class CookieJarApp {
         System.out.println("Successfully added recipe to your cookbook!");
     }
 
-    //Effects: Turns ingredients list into a string
+    //Effects: returns ingredients list as a string
     private String ingredientsToString(List<String> ingredients) {
         StringBuilder listSoFar = new StringBuilder();
         for (String next : ingredients) {
@@ -304,7 +304,7 @@ public class CookieJarApp {
         return listSoFar.toString();
     }
 
-    //Effects: Turns equipment list into a string
+    //Effects: returns equipment list as a string
     private String equipmentToString(List<String> equipment) {
         StringBuilder listSoFar = new StringBuilder();
         for (String next : equipment) {
@@ -313,7 +313,7 @@ public class CookieJarApp {
         return listSoFar.toString();
     }
 
-    //Effects: Turns steps list into a string
+    //Effects: returns steps list as a string
     private String stepsToString(List<String> steps) {
         StringBuilder listSoFar = new StringBuilder();
         for (String next : steps) {
@@ -322,7 +322,7 @@ public class CookieJarApp {
         return listSoFar.toString();
     }
 
-    //Effects: turns time integer into a string
+    //Effects: returns time integer as a string
     private String timeToString(int time) {
         return Integer.toString(time);
     }
