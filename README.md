@@ -30,6 +30,9 @@ A *bulleted* list:
 - As a user, I want to be able to see a recipe in detail
 - As a user, I want to be able to delete recipes from my cookbook
 - As a user, I want to be able to edit recipes from my cookbook
+- As a user, I want to be able to save my recipe list to file (if I so choose)
+- As a user, I want to be able to reload my recipe list from file (if I so choose)
+
 
 An example of text with **bold** and *italic* fonts.  
 
