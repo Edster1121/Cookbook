@@ -1,4 +1,5 @@
 package model;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -96,5 +97,13 @@ public class CookbookTest {
 
         assertEquals(1, testCookbook.getListOfRecipe().size());
         assertEquals(testRecipe2, testCookbook.getListOfRecipe().get(0));
+    }
+
+    @Test
+    void testToJson(){
+        testCookbook.addRecipe(testRecipe1);
+        JSONObject jsonObject = testCookbook.toJson();
+
+        assertEquals(testCookbook.getRecipe("Cookies"), jsonObject.getJSONArray("recipes"));
     }
 }

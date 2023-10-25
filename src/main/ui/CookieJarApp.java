@@ -17,7 +17,8 @@ public class CookieJarApp {
     private Cookbook myCookbook;
     private Scanner input;
     private Recipe myRecipe;
-    private static final String JSON_STORE = "./data/workroom.json";
+    private static final String JSON_STORE = "./data/testReaderEmptyCookbook.json";
+//    private static final String JSON_STORE = "./data/cookbook.json";
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
@@ -149,9 +150,9 @@ public class CookieJarApp {
     //Effects: produce a list of recipes in cookbook and ask which recipe to view
     private void produceListOfRecipe() {
         System.out.println("Here is a list of recipes:");
+        System.out.println("Please type the name of the recipe you would like to edit from the cookbook");
         for (Recipe next : myCookbook.getListOfRecipe()) {
             System.out.println("\u001B[32m\t" + next.getRecipeName() + "\u001B[0m");
-            System.out.println("Please type the name of the recipe you would like to edit from the cookbook");
         }
     }
 
