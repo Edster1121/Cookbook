@@ -40,19 +40,8 @@ public class JsonReaderTest extends JsonTest {
             Cookbook cb = reader.read();
             List<Recipe> recipes = cb.getListOfRecipe();
             Recipe recipe1 = new Recipe("Cookies");
-            recipe1.addIngredient("Butter");
-            recipe1.addStep("Bake in Oven");
-            recipe1.addEquipment("Oven");
-            recipe1.setTime(45);
-            recipe1.setRating(5);
-            recipe1.setAuthor("Eddie");
             Recipe recipe2 = new Recipe("Cake");
-            recipe2.addIngredient("Flour");
-            recipe2.addStep("Bake in cool oven");
-            recipe2.addEquipment("Tray");
-            recipe2.setTime(100);
-            recipe2.setRating(2);
-            recipe2.setAuthor("Michael");
+            init(recipe1, recipe2);
 
             assertEquals(2, recipes.size());
             checkRecipe(recipe1, recipes.get(0));
@@ -61,4 +50,21 @@ public class JsonReaderTest extends JsonTest {
             fail("Couldn't read from file");
         }
     }
+
+    public void init(Recipe recipe1, Recipe recipe2) {
+        recipe1.addIngredient("Butter");
+        recipe1.addStep("Bake in Oven");
+        recipe1.addEquipment("Oven");
+        recipe1.setTime(45);
+        recipe1.setRating(5);
+        recipe1.setAuthor("Eddie");
+
+        recipe2.addIngredient("Flour");
+        recipe2.addStep("Bake in cool oven");
+        recipe2.addEquipment("Tray");
+        recipe2.setTime(100);
+        recipe2.setRating(2);
+        recipe2.setAuthor("Michael");
+    }
+
 }

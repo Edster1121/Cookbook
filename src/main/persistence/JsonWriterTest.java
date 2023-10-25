@@ -45,19 +45,8 @@ public class JsonWriterTest extends JsonTest {
         try {
             Cookbook cb = new Cookbook();
             Recipe recipe1 = new Recipe("Cookies");
-            recipe1.addIngredient("Butter");
-            recipe1.addStep("Bake in Oven");
-            recipe1.addEquipment("Oven");
-            recipe1.setTime(45);
-            recipe1.setRating(5);
-            recipe1.setAuthor("Eddie");
             Recipe recipe2 = new Recipe("Cake");
-            recipe2.addIngredient("Flour");
-            recipe2.addStep("Bake in cool oven");
-            recipe2.addEquipment("Tray");
-            recipe2.setTime(100);
-            recipe2.setRating(2);
-            recipe2.setAuthor("Michael");
+            init(recipe1, recipe2);
             cb.addRecipe(recipe1);
             cb.addRecipe(recipe2);
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralWorkroom.json");
@@ -74,5 +63,21 @@ public class JsonWriterTest extends JsonTest {
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }
+    }
+
+    public void init(Recipe recipe1, Recipe recipe2) {
+        recipe1.addIngredient("Butter");
+        recipe1.addStep("Bake in Oven");
+        recipe1.addEquipment("Oven");
+        recipe1.setTime(45);
+        recipe1.setRating(5);
+        recipe1.setAuthor("Eddie");
+
+        recipe2.addIngredient("Flour");
+        recipe2.addStep("Bake in cool oven");
+        recipe2.addEquipment("Tray");
+        recipe2.setTime(100);
+        recipe2.setRating(2);
+        recipe2.setAuthor("Michael");
     }
 }
