@@ -131,10 +131,10 @@ public class Recipe implements Writable {
         this.steps = steps;
     }
 
-    //Effects: returns a list of string items as a string
+    //Effects: converts a list of string to a string with "/" between each item and returns string
     public String itemsToString(List<String> items) {
         StringBuilder listSoFar = new StringBuilder();
-        for (String next : ingredients) {
+        for (String next : items) {
             listSoFar.append(next).append("/");
         }
         return listSoFar.toString();

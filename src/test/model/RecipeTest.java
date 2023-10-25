@@ -1,5 +1,6 @@
 package model;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -182,5 +183,70 @@ class RecipeTest {
         testRecipe.changeRecipeName("Fruit cake");
         assertEquals("Fruit cake", testRecipe.getRecipeName());
     }
+
+    @Test
+    void testSetSteps(){
+        List<String> steps = new ArrayList<>();
+        steps.add("Bake");
+        steps.add("Cook");
+        testRecipe.setSteps(steps);
+        assertEquals(steps, testRecipe.getSteps());
+    }
+
+    @Test
+    void testSetIngredients(){
+        List<String> ingredients = new ArrayList<>();
+        ingredients.add("Flour");
+        ingredients.add("Sugar");
+        testRecipe.setIngredients(ingredients);
+        assertEquals(ingredients, testRecipe.getIngredients());
+    }
+
+    @Test
+    void testSetEquipment(){
+        List<String> equipment = new ArrayList<>();
+        equipment.add("Tray");
+        equipment.add("Oven");
+        testRecipe.setEquipment(equipment);
+        assertEquals(equipment, testRecipe.getEquipment());
+    }
+
+    @Test
+    void testItemsToStringEmptyList(){
+        assertEquals("", testRecipe.itemsToString(testRecipe.getEquipment()));
+    }
+
+    @Test
+    void testItemsToStringOneInList(){
+        testRecipe.addEquipment("Oven");
+        assertEquals("Oven/", testRecipe.itemsToString(testRecipe.getEquipment()));
+    }
+
+    @Test
+    void testItemsToStringMultipleInList(){
+        testRecipe.addEquipment("Oven");
+        testRecipe.addEquipment("Tray");
+        assertEquals("Oven/Tray/", testRecipe.itemsToString(testRecipe.getEquipment()));
+    }
+
+    @Test
+    void testRecipeToJson(){
+        testRecipe.addIngredient("sugar");
+        testRecipe.addEquipment("oven");
+        testRecipe.addStep("Bake in oven");
+        testRecipe.setRating(5);
+        testRecipe.setAuthor("Eddie");
+        testRecipe.setTime(45);
+
+        JSONObject jsonObject = testRecipe.toJson();
+
+        assertEquals(testRecipe.getRecipeName(), jsonObject.getString("recipe name"));
+        assertEquals("sugar/", jsonObject.getString("ingredients"));
+        assertEquals("oven/", jsonObject.getString("equipment"));
+        assertEquals("Bake in oven/", jsonObject.getString("steps"));
+        assertEquals(testRecipe.getRating(), jsonObject.getInt("rating"));
+        assertEquals(testRecipe.getTimeRequired(), jsonObject.getInt("time required"));
+    }
+
 
 }
