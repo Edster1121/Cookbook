@@ -131,8 +131,8 @@ public class Recipe implements Writable {
         this.steps = steps;
     }
 
-    //Effects: returns ingredients list as a string
-    public String ingredientsToString(List<String> ingredients) {
+    //Effects: returns a list of string items as a string
+    public String itemsToString(List<String> items) {
         StringBuilder listSoFar = new StringBuilder();
         for (String next : ingredients) {
             listSoFar.append(next).append("/");
@@ -140,31 +140,14 @@ public class Recipe implements Writable {
         return listSoFar.toString();
     }
 
-    //Effects: returns equipment list as a string
-    public String equipmentToString(List<String> equipment) {
-        StringBuilder listSoFar = new StringBuilder();
-        for (String next : equipment) {
-            listSoFar.append(next).append("/");
-        }
-        return listSoFar.toString();
-    }
-
-    //Effects: returns steps list as a string
-    public String stepsToString(List<String> steps) {
-        StringBuilder listSoFar = new StringBuilder();
-        for (String next : steps) {
-            listSoFar.append(next).append("/");
-        }
-        return listSoFar.toString();
-    }
 
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("recipe name", name);
-        json.put("ingredients", ingredientsToString(ingredients));
-        json.put("equipment", ingredientsToString(equipment));
-        json.put("steps", ingredientsToString(steps));
+        json.put("ingredients", itemsToString(ingredients));
+        json.put("equipment", itemsToString(equipment));
+        json.put("steps", itemsToString(steps));
         json.put("time required", timeRequired);
         json.put("author", author);
         json.put("rating", rating);
