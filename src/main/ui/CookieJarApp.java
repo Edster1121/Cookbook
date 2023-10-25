@@ -2,21 +2,32 @@ package ui;
 
 import model.Cookbook;
 import model.Recipe;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
+// This class references JsonSerializationDemo
 // This code references the TellerApp
 // Cookbook Application
 public class CookieJarApp {
     private Cookbook myCookbook;
     private Scanner input;
     private Recipe myRecipe;
+    private static final String JSON_STORE = "./data/workroom.json";
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+
 
     //Effects: runs the CookieJar Application
-    public CookieJarApp() {
+    public CookieJarApp() throws FileNotFoundException {
         input = new Scanner(System.in);
         myCookbook = new Cookbook();
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runCookieJar();
     }
 
@@ -26,7 +37,6 @@ public class CookieJarApp {
     private void runCookieJar() {
         boolean running = true;
         String userInput;
-
         while (running) {
             displayMenu();
             userInput = input.nextLine();
@@ -47,13 +57,41 @@ public class CookieJarApp {
                 case "check":
                     processCheckInput();
                     break;
+                case "load":
+                    processLoadInput();
+                    break;
+                case "save":
+                    processSaveInput();
+                    break;
             }
+        }
+    }
+
+    // EFFECTS: saves the cookbook to file
+    private void processSaveInput() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(myCookbook);
+            jsonWriter.close();
+            System.out.println("Saved cookbook to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void processLoadInput() {
+        try {
+            myCookbook = jsonReader.read();
+            System.out.println("Loaded cookbook from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 
     //Modifies: this
     //Effects: Process if userInput is "edit"
-    @SuppressWarnings("methodlength")
     private void processEditInput() {
         String userInput;
         if (myCookbook.getListOfRecipe().isEmpty()) {
@@ -68,27 +106,34 @@ public class CookieJarApp {
                 displayEditOptions();
 
                 userInput = input.nextLine();
-                if (userInput.equals("name")) {
-                    editNameHelper(userRecipe);
-                } else if (userInput.equals("author")) {
-                    editAuthorHelper();
-                } else if (userInput.equals("time")) {
-                    editTimeHelper();
-                } else if (userInput.equals("rating")) {
-                    editRatingHelper();
-                } else if (userInput.equals("ingredients")) {
-                    editIngredientsHelper(userRecipe);
-                } else if (userInput.equals("equipment")) {
-                    editEquipmentHelper(userRecipe);
-                } else if (userInput.equals("steps")) {
-                    editStepsHelper(userRecipe);
-                } else if (userInput.equals("exit")) {
-                    keepGoing = false;
-                } else {
-                    System.out.println("Sorry I don't understand that command :(");
-                }
+                keepGoing = editOptions(userInput, keepGoing, userRecipe);
             }
         }
+    }
+
+    //Modifies: this
+    //Effects: processes the edit commands the user can do
+    private boolean editOptions(String userInput, boolean keepGoing, Recipe userRecipe) {
+        if (userInput.equals("name")) {
+            editNameHelper(userRecipe);
+        } else if (userInput.equals("author")) {
+            editAuthorHelper();
+        } else if (userInput.equals("time")) {
+            editTimeHelper();
+        } else if (userInput.equals("rating")) {
+            editRatingHelper();
+        } else if (userInput.equals("ingredients")) {
+            editIngredientsHelper(userRecipe);
+        } else if (userInput.equals("equipment")) {
+            editEquipmentHelper(userRecipe);
+        } else if (userInput.equals("steps")) {
+            editStepsHelper(userRecipe);
+        } else if (userInput.equals("exit")) {
+            keepGoing = false;
+        } else {
+            System.out.println("Sorry I don't understand that command :(");
+        }
+        return keepGoing;
     }
 
     //Effects: shows recipe specifics if userInput is the name of a recipe in the cookbook
@@ -347,6 +392,8 @@ public class CookieJarApp {
         System.out.println("type 'delete' to delete a recipe!");
         System.out.println("type 'edit' to edit a recipe!");
         System.out.println("type 'check' to check recipes in your cookbook so far!");
+        System.out.println("type 'save' to save recipes in your cookbook so far!");
+        System.out.println("type 'load' to load recipes in your cookbook so far!");
         System.out.println("type 'quit' to quit!");
     }
 

@@ -1,10 +1,15 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
+// This class references JsonSerializationDemo
 // Represents a cookbook containing a list of recipes
-public class Cookbook {
+public class Cookbook implements Writable {
     List<Recipe> cookbook; //cookbook contains recipes
 
     //Effects: creates an empty list of recipes
@@ -39,6 +44,24 @@ public class Cookbook {
 
     public List<Recipe> getListOfRecipe() {
         return this.cookbook;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("recipes", recipesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns recipes in this cookbook as a JSON array
+    private JSONArray recipesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Recipe r : cookbook) {
+            jsonArray.put(r.toJson());
+        }
+
+        return jsonArray;
     }
 
 }

@@ -1,11 +1,16 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
+// This class references JsonSerializationDemo
 // Represents a recipe with list of ingredients, list of equipment needed, list of steps in order of cooking process,
 // time required to make dish, author of the recipe, and rating.
-public class Recipe {
+public class Recipe implements Writable {
     private String name;              //name of the dish
     private List<String> ingredients; //tracks list of ingredients in recipe
     private List<String> equipment;   //tracks list of equipment needed for recipe
@@ -81,7 +86,7 @@ public class Recipe {
     }
 
     //Modifies: this
-    //Effects: sets rating, replaces previous rating if exists, 1<= rating <= 5, rating is 1-5 inclusive
+    //Effects: sets rating, replaces previous rating if exists, rating is 1-5 inclusive
     public void setRating(int rating) {
         this.rating = rating;
     }
@@ -114,5 +119,56 @@ public class Recipe {
         return rating;
     }
 
+    public void setIngredients(List<String> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public void setEquipment(List<String> equipment) {
+        this.equipment = equipment;
+    }
+
+    public void setSteps(List<String> steps) {
+        this.steps = steps;
+    }
+
+    //Effects: returns ingredients list as a string
+    public String ingredientsToString(List<String> ingredients) {
+        StringBuilder listSoFar = new StringBuilder();
+        for (String next : ingredients) {
+            listSoFar.append(next).append("/");
+        }
+        return listSoFar.toString();
+    }
+
+    //Effects: returns equipment list as a string
+    public String equipmentToString(List<String> equipment) {
+        StringBuilder listSoFar = new StringBuilder();
+        for (String next : equipment) {
+            listSoFar.append(next).append("/");
+        }
+        return listSoFar.toString();
+    }
+
+    //Effects: returns steps list as a string
+    public String stepsToString(List<String> steps) {
+        StringBuilder listSoFar = new StringBuilder();
+        for (String next : steps) {
+            listSoFar.append(next).append("/");
+        }
+        return listSoFar.toString();
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("recipe name", name);
+        json.put("ingredients", ingredientsToString(ingredients));
+        json.put("equipment", ingredientsToString(equipment));
+        json.put("steps", ingredientsToString(steps));
+        json.put("time required", timeRequired);
+        json.put("author", author);
+        json.put("rating", rating);
+        return json;
+    }
 
 }
