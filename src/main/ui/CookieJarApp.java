@@ -17,8 +17,7 @@ public class CookieJarApp {
     private Cookbook myCookbook;
     private Scanner input;
     private Recipe myRecipe;
-    private static final String JSON_STORE = "./data/testReaderEmptyCookbook.json";
-//    private static final String JSON_STORE = "./data/cookbook.json";
+    private static final String JSON_STORE = "./data/cookbook.json";
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
