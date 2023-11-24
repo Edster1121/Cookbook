@@ -1,9 +1,6 @@
 package ui;
 
-import ui.tabs.*;
-
 import javax.swing.*;
-import java.awt.*;
 import java.io.FileNotFoundException;
 
 // This class references SmartHome

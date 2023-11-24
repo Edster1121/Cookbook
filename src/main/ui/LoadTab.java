@@ -1,11 +1,6 @@
 package ui;
 
-import model.Cookbook;
 import persistence.JsonReader;
-import ui.CookbookState;
-import ui.CookieJarAppUI;
-import ui.MyCookbook;
-import ui.tabs.Tab;
 
 import javax.swing.*;
 import java.awt.*;

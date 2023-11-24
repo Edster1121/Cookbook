@@ -1,10 +1,11 @@
-package ui.tabs;
+package ui;
 
 import model.Cookbook;
 import model.Recipe;
 
 import ui.CookbookState;
 import ui.CookieJarAppUI;
+import ui.Tab;
 
 import javax.swing.*;
 import java.awt.*;

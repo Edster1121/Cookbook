@@ -1,12 +1,7 @@
-package ui.tabs;
-
-import com.sun.jdi.request.MonitorContendedEnteredRequest;
-import ui.CookieJarAppUI;
+package ui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 //this class references SmartHome
 public class HomeTab extends Tab {

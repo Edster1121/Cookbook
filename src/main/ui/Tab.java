@@ -1,4 +1,4 @@
-package ui.tabs;
+package ui;
 
 import ui.CookieJarAppUI;
 
