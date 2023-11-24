@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 
 //this class references SmartHome
+//represents the save tab in the ui which allows the user to save their current cookbook to Json, has a button
 public class SaveTab extends Tab implements ActionListener {
     private static final String JSON_STORE = "./data/cookbook.json";
     private JsonWriter jsonWriter;
@@ -23,7 +24,7 @@ public class SaveTab extends Tab implements ActionListener {
     private JButton saveButton;
 
 
-    //EFFECTS: constructs a delete recipe tab for console with a greeting
+    //EFFECTS: constructs a save recipe tab for console with a greeting
     public SaveTab(CookieJarAppUI controller, CookbookState cookbookState) {
         super(controller);
         panel = new JPanel();
@@ -46,6 +47,7 @@ public class SaveTab extends Tab implements ActionListener {
         this.add(greeting);
     }
 
+    //Modifies: this
     //EFFECTS: creates save button to save from json
     private void placeSaveButton() {
         JPanel buttonRow = formatButton(saveButton);
@@ -57,6 +59,7 @@ public class SaveTab extends Tab implements ActionListener {
         this.add(buttonRow);
     }
 
+    //Effects: When button pressed, writes the current cookbook to Json.
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == saveButton) {

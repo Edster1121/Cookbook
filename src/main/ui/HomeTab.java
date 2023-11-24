@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 //this class references SmartHome
+//represents the home tab in the ui with an image and a greeting
 public class HomeTab extends Tab {
 
     private static final String INIT_GREETING = "Welcome!";
@@ -19,7 +20,8 @@ public class HomeTab extends Tab {
         placeGreeting();
     }
 
-    //EFFECTS: creates greeting at top of console
+    //Modifies: this
+    //EFFECTS: creates and places greeting at top of console
     private void placeGreeting() {
         greeting = new JLabel(INIT_GREETING, JLabel.CENTER);
         image = new JLabel();

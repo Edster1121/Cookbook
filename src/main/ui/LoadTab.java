@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 //this class references SmartHome
+//represents the load tab in the ui which allows the user to load a previously saved cookbook, has a button
 public class LoadTab extends Tab implements ActionListener {
     private static final String JSON_STORE = "./data/cookbook.json";
     private JsonReader jsonReader;
@@ -20,7 +21,7 @@ public class LoadTab extends Tab implements ActionListener {
 
 
 
-    //EFFECTS: constructs a delete recipe tab for console with a greeting
+    //EFFECTS: constructs a load recipe tab for console with a greeting and load button
     public LoadTab(CookieJarAppUI controller, CookbookState cookbookState) {
         super(controller);
         jsonReader = new JsonReader(JSON_STORE);
@@ -41,7 +42,7 @@ public class LoadTab extends Tab implements ActionListener {
         this.add(greeting);
     }
 
-    //EFFECTS: creates Arrive and Leave buttons that change greeting message when clicked
+    //EFFECTS: creates load button that reads cookbook from json
     private void placeLoadButton() {
         JPanel p = new JPanel();
         p.setLayout(new FlowLayout());
@@ -52,6 +53,8 @@ public class LoadTab extends Tab implements ActionListener {
         this.add(p);
     }
 
+    //Effects: When button pressed, reads cookbook from Json and overwrites the currents cookbook with the cookbook
+    //loaded from Json
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == loadButton) {

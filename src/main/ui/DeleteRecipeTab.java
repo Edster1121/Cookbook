@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 //this class references SmartHome
+//represents the delete tab in the ui with a button and textfield
 public class DeleteRecipeTab extends Tab implements ActionListener {
 
     private static final String INIT_GREETING = "Please choose a recipe to delete :)";
@@ -18,7 +19,7 @@ public class DeleteRecipeTab extends Tab implements ActionListener {
     private JTextField deleteTextBox;
 
 
-    //EFFECTS: constructs a delete recipe tab for console with a greeting
+    //EFFECTS: constructs a delete recipe tab with a greeting
     public DeleteRecipeTab(CookieJarAppUI controller, CookbookState cookbookState) {
         super(controller);
         panel = new JPanel();
@@ -34,14 +35,15 @@ public class DeleteRecipeTab extends Tab implements ActionListener {
         placeDeleteButtons();
     }
 
-    //EFFECTS: creates greeting at top of console
+    //EFFECTS: creates greeting at top of page
     private void placeGreeting() {
         greeting = new JLabel(INIT_GREETING, JLabel.CENTER);
         greeting.setSize(WIDTH, HEIGHT / 3);
         this.add(greeting);
     }
 
-    //EFFECTS: creates Arrive and Leave buttons that change greeting message when clicked
+    //Modifies: this
+    //EFFECTS: creates delete button that removes a recipe from the cookbook
     private void placeDeleteButtons() {
         JButton b1 = new JButton("Delete");
         this.add(deleteTextBox);
@@ -61,6 +63,9 @@ public class DeleteRecipeTab extends Tab implements ActionListener {
         this.add(buttonRow);
     }
 
+    //Modifies: this, deleteTextbox
+    //Effects: When button is pressed, removes recipe from cookbook if the string typed in text box is the equal to
+    //the name of a recipe in the cookbook
     @Override
     public void actionPerformed(ActionEvent e) {
         String buttonPressed = e.getActionCommand();

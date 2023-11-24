@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.io.FileNotFoundException;
 
 // This class references SmartHome
+// Represents the gui of the application with tabs
 public class CookieJarAppUI extends JFrame {
     private JTabbedPane sidebar;
     private CookbookState cookbookState;

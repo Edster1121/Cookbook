@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 //this class references SmartHome
+//represents the add tab in the ui which allows the user to add a recipe to their cookbook
 public class AddRecipeTab extends Tab implements ActionListener {
     private static final String INIT_GREETING = "Please add a recipe below :)";
     private JLabel greeting;
@@ -23,7 +24,7 @@ public class AddRecipeTab extends Tab implements ActionListener {
     private JButton addButton;
     private JPanel panel;
 
-    //EFFECTS: constructs a delete recipe tab for console with a greeting
+    //EFFECTS: constructs an add recipe tab with new button and textfields
     public AddRecipeTab(CookieJarAppUI controller, CookbookState cookbookState) {
         super(controller);
         panel = new JPanel();
@@ -44,6 +45,7 @@ public class AddRecipeTab extends Tab implements ActionListener {
         this.add(greeting);
     }
 
+    //Modifies: this
     //Effects: creates text-box for adding recipe
     private void placeNewRecipe() {
         panel = formatButton(addButton);
@@ -54,6 +56,9 @@ public class AddRecipeTab extends Tab implements ActionListener {
         this.add(panel);
     }
 
+    //Modifies: this
+    //Effects: creates new text fields for each field of recipe: name, author, time, rating, ingredients, equipment,
+    //steps and adds each to panel
     private void setFields() {
         name = new JTextField("recipe name", 16);
         panel.add(name);
@@ -104,6 +109,9 @@ public class AddRecipeTab extends Tab implements ActionListener {
         }
     }
 
+    //Modifies: this
+    //Effects: When button is pressed, add each of the corresponding strings in each text box as item in recipe and
+    //adds the recipe to the cookbook.
     @Override
     public void actionPerformed(ActionEvent e) {
         String buttonPressed = e.getActionCommand();

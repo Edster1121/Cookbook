@@ -3,17 +3,13 @@ package ui;
 import model.Cookbook;
 import model.Recipe;
 
-import ui.CookbookState;
-import ui.CookieJarAppUI;
-import ui.Tab;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-//this class references SmartHome
+//represents the view tab in the ui which allows the user to view all recipes in their cookbook, has a button
 public class ViewRecipesTab extends Tab implements ActionListener {
     private static final String INIT_GREETING = "Here are your recipes :)";
     private JLabel greeting;
@@ -25,7 +21,7 @@ public class ViewRecipesTab extends Tab implements ActionListener {
     private JLabel newRecipes;
     private JTable table;
 
-    //EFFECTS: constructs a delete recipe tab for console with a greeting
+    //EFFECTS: constructs a view recipe tab for console with a greeting and button
     public ViewRecipesTab(CookieJarAppUI controller, CookbookState cookbookState) {
         super(controller);
         buttonPanel = new JPanel();
@@ -41,6 +37,7 @@ public class ViewRecipesTab extends Tab implements ActionListener {
         placeRecipes();
     }
 
+    //Modifies: this
     //EFFECTS: creates greeting at top of console
     private void placeGreeting() {
         greeting = new JLabel(INIT_GREETING, JLabel.CENTER);
@@ -48,6 +45,7 @@ public class ViewRecipesTab extends Tab implements ActionListener {
         this.add(greeting);
     }
 
+    //Modifies: this
     //Effects: displays recipes
     private void placeRecipes() {
         buttonPanel = formatButton(viewButton);
@@ -57,23 +55,6 @@ public class ViewRecipesTab extends Tab implements ActionListener {
         this.add(buttonPanel);
         this.add(textPanel);
         this.add(newRecipes);
-    }
-
-    //Effects: prints recipe specifics
-    private void printRecipe(int i) {
-        Recipe recipe = cookbookState.myCookbook.getListOfRecipe().get(i);
-        String stringSoFar = recipesText.getText();
-        if (!stringSoFar.contains(recipe.getRecipeName())) {
-            recipesText.setText(stringSoFar + recipe.getRecipeName() + " "
-                    + "Author:" + " " + recipe.getAuthor() + " "
-                    + "Time Required: " + timeToString(recipe.getTimeRequired()) + " minutes "
-                    + "Rating: " + ratingToString(recipe.getRating()) + "/5 "
-                    + "Ingredients:" + ingredientsToString(recipe.getIngredients()) + " "
-                    + "Equipment:" + equipmentToString(recipe.getEquipment()) + " "
-                    + "Steps:"
-                    + stepsToString(recipe.getSteps()));
-            this.add(recipesText);
-        }
     }
 
 
@@ -104,17 +85,7 @@ public class ViewRecipesTab extends Tab implements ActionListener {
         return listSoFar.toString();
     }
 
-    //Effects: returns time integer as a string
-    private String timeToString(int time) {
-        return Integer.toString(time);
-    }
-
-    //Requires: rating must be numerical integer in the form of a string
-    //Effects: turns rating integer into a string
-    private String ratingToString(int rating) {
-        return Integer.toString(rating);
-    }
-
+    //Effects: creates string to store recipes
     private String[][] addRecipeToList(Cookbook cookbook) {
         String[][] rowData = new String[cookbookState.myCookbook.getListOfRecipe().size()][7];
         List<Recipe> recipes = cookbookState.myCookbook.getListOfRecipe();
@@ -130,6 +101,7 @@ public class ViewRecipesTab extends Tab implements ActionListener {
         return rowData;
     }
 
+    //Effects: When button pressed, create a new frame with all the recipes stored in a table
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == viewButton) {

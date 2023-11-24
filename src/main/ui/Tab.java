@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 //This class references SmartHome
+//Represents a parent class which formats buttons into rows
 public abstract class Tab extends JPanel {
 
     private final CookieJarAppUI controller;
@@ -22,20 +23,6 @@ public abstract class Tab extends JPanel {
         p.add(b);
 
         return p;
-    }
-
-    //Effects: creates and returns an area for large text areas
-    public JPanel formatLabel(JLabel jl) {
-        JPanel p = new JPanel();
-        p.setLayout(new GridLayout(0,1));
-        p.add(jl);
-
-        return p;
-    }
-
-    //EFFECTS: returns the SmartHomeUI controller for this tab
-    public CookieJarAppUI getController() {
-        return controller;
     }
 
 }
