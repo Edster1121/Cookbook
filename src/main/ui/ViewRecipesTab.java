@@ -89,6 +89,7 @@ public class ViewRecipesTab extends Tab implements ActionListener {
     private String[][] addRecipeToList(Cookbook cookbook) {
         String[][] rowData = new String[cookbookState.myCookbook.getListOfRecipe().size()][7];
         List<Recipe> recipes = cookbookState.myCookbook.getListOfRecipe();
+        cookbookState.myCookbook.makeRecord();
         for (int i = 0; i < cookbookState.myCookbook.getListOfRecipe().size(); i++) {
             rowData[i][0] = recipes.get(i).getRecipeName();
             rowData[i][1] = recipes.get(i).getAuthor();
@@ -109,7 +110,7 @@ public class ViewRecipesTab extends Tab implements ActionListener {
                 JFrame frame = new JFrame();
                 frame.setSize(500, 500);
                 frame.setVisible(true);
-                String[] columns = {"Recipe name", "Author", "Time", "Rating", "Steps", "Equipment", "Ingredients"};
+                String[] columns = {"Recipe name", "Author", "Time", "Rating", "Ingredients", "Equipment", "Steps"};
                 String[][] rowData;
                 rowData = addRecipeToList(cookbookState.myCookbook);
                 table = new JTable(rowData, columns);

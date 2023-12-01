@@ -21,12 +21,14 @@ public class Cookbook implements Writable {
     //Effects: adds recipe to cookbook
     public void addRecipe(Recipe recipe) {
         this.cookbook.add(recipe);
+        EventLog.getInstance().logEvent(new Event("added recipe " + "'" + recipe.getRecipeName() + "'"));
     }
 
     //Modifies: this
     //Effects: removes recipe from cookbook, does nothing if no recipes in cookbook;
     public void removeRecipe(Recipe recipe) {
         this.cookbook.remove(recipe);
+        EventLog.getInstance().logEvent(new Event("removed recipe " + "'" + recipe.getRecipeName() + "'"));
     }
 
     //Modifies: this
@@ -40,6 +42,10 @@ public class Cookbook implements Writable {
             }
         }
         return null;
+    }
+
+    public void makeRecord() {
+        EventLog.getInstance().logEvent(new Event("viewed recipes"));
     }
 
     public List<Recipe> getListOfRecipe() {

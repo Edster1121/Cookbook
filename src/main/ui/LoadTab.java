@@ -15,7 +15,7 @@ public class LoadTab extends Tab implements ActionListener {
     private JsonReader jsonReader;
     private CookbookState cookbookState;
 
-    private static final String INIT_GREETING = "Please choose a recipe to load :)";
+    private static final String INIT_GREETING = "Please press the button to load the cookbook :)";
     private JLabel greeting;
     private JButton loadButton;
 

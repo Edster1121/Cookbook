@@ -17,7 +17,7 @@ public class SaveTab extends Tab implements ActionListener {
     private static final String JSON_STORE = "./data/cookbook.json";
     private JsonWriter jsonWriter;
 
-    private static final String INIT_GREETING = "Please choose a recipe to save :)";
+    private static final String INIT_GREETING = "Please press the button to save the cookbook :)";
     private JLabel greeting;
     private CookbookState cookbookState;
     private JPanel panel;

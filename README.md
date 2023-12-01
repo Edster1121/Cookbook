@@ -61,3 +61,11 @@ A *bulleted* list for GUI application:
 - You can reload the state of my application by going to the load tab and clicking the load button on that page
 
 
+# Phase 4 Task 2
+
+- Each time you add a recipe, it will be logged and printed when you close the window
+- Each time you remove a recipe, it will be logged and printed when you close the window
+- Each time you view your cookbook, it will be logged and printed when you close the window
+
+
+
