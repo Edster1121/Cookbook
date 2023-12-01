@@ -70,8 +70,7 @@ public class DeleteRecipeTab extends Tab implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String buttonPressed = e.getActionCommand();
         if (e.getSource() == deleteButton) {
-            Recipe recipe = cookbookState.myCookbook.getRecipe(deleteTextBox.getText());
-            cookbookState.myCookbook.removeRecipe(recipe);
+            cookbookState.myCookbook.removeRecipe(cookbookState.myCookbook.getRecipe(deleteTextBox.getText()));
             deleteTextBox.setText("recipe name");
         }
 

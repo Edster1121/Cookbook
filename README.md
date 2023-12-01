@@ -66,6 +66,26 @@ A *bulleted* list for GUI application:
 - Each time you add a recipe, it will be logged and printed when you close the window
 - Each time you remove a recipe, it will be logged and printed when you close the window
 - Each time you view your cookbook, it will be logged and printed when you close the window
+  Fri Dec 01 12:43:01 PST 2023: added recipe '1'
+  Fri Dec 01 12:43:09 PST 2023: added recipe '2'
+  Fri Dec 01 12:43:12 PST 2023: viewed recipes
+  Fri Dec 01 12:43:16 PST 2023: removed recipe '1'
+  Fri Dec 01 12:43:18 PST 2023: removed recipe '2'
+
+
+# Phase 4 Task 3
+
+In my project, there were some instances where I could improve the code. For instance, before we learned about the 
+singleton pattern, I implemented a single class with a single Cookbook field. It would be a better design choice to
+implement the singleton pattern into my Cookbook class as I only ever use one cookbook. Therefore, if I had more time,
+I would remove the CookbookState class and make the Cookbook class a singleton pattern to ensure that I am only ever 
+using one instance of a class and for cleaner and easier to understand code.
+As well, I have a lot of repeated methods in my classes. If I had more time, I would abstract some of these methods to
+improve the cleanliness of my code and the redundancy of my code. 
+
+
+
+
 
 
 

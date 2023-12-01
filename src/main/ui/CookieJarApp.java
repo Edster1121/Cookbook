@@ -33,38 +33,39 @@ public class CookieJarApp {
 
     //Modifies: this
     //Effects: runs user input
-    @SuppressWarnings("methodlength")
     private void runCookieJar() {
         boolean running = true;
         String userInput;
         while (running) {
             displayMenu();
             userInput = input.nextLine();
-            switch (userInput) {
-                case "add":
-                    processAddInput();
-                    break;
-                case "edit":
-                    processEditInput();
-                    break;
-                case "delete":
-                    processDeleteInput();
-                    break;
-                case "quit":
-                    running = false;
-                    System.out.println("Have a good day!");
-                    break;
-                case "check":
-                    processCheckInput();
-                    break;
-                case "load":
-                    processLoadInput();
-                    break;
-                case "save":
-                    processSaveInput();
-                    break;
-            }
+            running = processOptionsSwitchHelper(running, userInput);
         }
+    }
+
+    private boolean processOptionsSwitchHelper(boolean running, String userInput) {
+        switch (userInput) {
+            case "add":
+                processAddInput();
+                break;
+            case "delete":
+                processDeleteInput();
+                break;
+            case "quit":
+                running = false;
+                System.out.println("Have a good day!");
+                break;
+            case "check":
+                processCheckInput();
+                break;
+            case "load":
+                processLoadInput();
+                break;
+            case "save":
+                processSaveInput();
+                break;
+        }
+        return running;
     }
 
     // EFFECTS: saves the cookbook to file
