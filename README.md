@@ -85,6 +85,8 @@ using one instance of a class and for cleaner and easier to understand code.
 As well, I have a lot of repeated methods in my classes. If I had more time, I would abstract some of these methods to
 improve the cleanliness of my code and the redundancy of my code. 
 
+I could also use hashmaps to create a 
+
 
 
 
