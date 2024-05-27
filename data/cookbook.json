@@ -1,0 +1,9 @@
+{"recipes": [{
+    "recipe name": "recipe name",
+    "time required": 2,
+    "author": "author",
+    "rating": 1,
+    "ingredients": "apples/",
+    "equipment": "money/",
+    "steps": "buy apples/"
+}]}

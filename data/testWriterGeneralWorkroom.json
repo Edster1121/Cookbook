@@ -1,0 +1,20 @@
+{"recipes": [
+    {
+        "recipe name": "Cookies",
+        "time required": 45,
+        "author": "Eddie",
+        "rating": 5,
+        "ingredients": "Butter/",
+        "equipment": "Oven/",
+        "steps": "Bake in Oven/"
+    },
+    {
+        "recipe name": "Cake",
+        "time required": 100,
+        "author": "Michael",
+        "rating": 2,
+        "ingredients": "Flour/",
+        "equipment": "Tray/",
+        "steps": "Bake in cool oven/"
+    }
+]}
