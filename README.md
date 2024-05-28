@@ -38,29 +38,6 @@ A *bulleted* list for GUI application:
 - As a user, I want to be able to save my recipes if I so choose (button)
 - As a user, I want to be able to load my recipes if I so choose (button)
 
-# Instructions for Grader
-
-- You can view the recipes by clicking the view tab on the left-hand side and clicking the button "View Recipes". 
-  - This button will not produce anything if there are no recipes added to the cookbook so far
-
-- You can generate the first required action related to the user story "adding multiple recipes to a cookbook" by 
-  - clicking the Add Recipe side tab and inputting the information into the text boxes. Make sure rating and time are
-  - integers where rating is restricted 1-5. As well, you can split the items in your equipment, ingredients, and steps
-  - with a "/"
-  - Lastly, click the add recipe button to add the recipes to your cookbook!
-
-- You can generate the second required action related to the user story "removing multiple recipes from a cookbook" by
-  - clicking on the delete recipe tab on the left-hand side and typing the name of the recipe you want to delete. Once
-  - you have done so, you can click the delete recipe button, and it will remove the recipe from your cookbook
-
-- You can locate my visual component by opening the application and viewing the home page, there will be an image there
-
-- You can save the state of my application by clicking the save recipes tab on the left-hand side and clicking the save
-  - button that is located on that page
-
-- You can reload the state of my application by going to the load tab and clicking the load button on that page
-
-
 # Phase 4 Task 2
 
 - Each time you add a recipe, it will be logged and printed when you close the window
